@@ -633,33 +633,40 @@ function updateStatsDisplay(data) {
 // Twitter RSS Feed Integration
 async function fetchLatestTweet() {
     try {
-        const rssUrl = 'https://api.allorigins.win/get?url=https://nitter.privacydev.net/Jms_Tpp/rss';
+        // Try multiple Nitter instances
+        const nitterInstances = [
+            'https://nitter.net/Jms_Tpp/rss',
+            'https://nitter.poast.org/Jms_Tpp/rss',
+            'https://nitter.privacydev.net/Jms_Tpp/rss'
+        ];
+        
+        // Use a CORS proxy
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        const rssUrl = proxyUrl + nitterInstances[0];
         
         const response = await fetch(rssUrl);
-        const data = await response.json();
-        console.log('API Response:', data);
+        const rssText = await response.text();
+        console.log('RSS Response:', rssText);
         
-        if (data.contents) {
-            // Parse the RSS XML
-            const parser = new DOMParser();
-            const xml = parser.parseFromString(data.contents, 'text/xml');
-            const items = xml.querySelectorAll('item');
+        // Parse the RSS XML
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(rssText, 'text/xml');
+        const items = xml.querySelectorAll('item');
+        
+        if (items.length > 0) {
+            const latestItem = items[0];
+            const title = latestItem.querySelector('title')?.textContent || '';
+            const link = latestItem.querySelector('link')?.textContent || '';
+            const pubDate = latestItem.querySelector('pubDate')?.textContent || '';
             
-            if (items.length > 0) {
-                const latestItem = items[0];
-                const title = latestItem.querySelector('title').textContent;
-                const link = latestItem.querySelector('link').textContent;
-                const pubDate = latestItem.querySelector('pubDate').textContent;
-                
-                const tweet = {
-                    content_text: title,
-                    url: link,
-                    date_published: pubDate
-                };
-                
-                displayTweet(tweet);
-                return;
-            }
+            const tweet = {
+                content_text: title,
+                url: link,
+                date_published: pubDate
+            };
+            
+            displayTweet(tweet);
+            return;
         }
         
         displayFallbackTweet();
