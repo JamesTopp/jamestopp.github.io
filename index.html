@@ -633,18 +633,36 @@ function updateStatsDisplay(data) {
 // Twitter RSS Feed Integration
 async function fetchLatestTweet() {
     try {
-        // Using RSS2JSON service to convert Twitter RSS to JSON
-const rssUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://nitter.poast.org/Jms_Tpp/rss';         
+        const rssUrl = 'https://api.allorigins.win/get?url=https://nitter.privacydev.net/Jms_Tpp/rss';
+        
         const response = await fetch(rssUrl);
         const data = await response.json();
         console.log('API Response:', data);
         
-        if (data.items && data.items.length > 0) {
-            const latestTweet = data.items[0];
-            displayTweet(latestTweet);
-        } else {
-            displayFallbackTweet();
+        if (data.contents) {
+            // Parse the RSS XML
+            const parser = new DOMParser();
+            const xml = parser.parseFromString(data.contents, 'text/xml');
+            const items = xml.querySelectorAll('item');
+            
+            if (items.length > 0) {
+                const latestItem = items[0];
+                const title = latestItem.querySelector('title').textContent;
+                const link = latestItem.querySelector('link').textContent;
+                const pubDate = latestItem.querySelector('pubDate').textContent;
+                
+                const tweet = {
+                    content_text: title,
+                    url: link,
+                    date_published: pubDate
+                };
+                
+                displayTweet(tweet);
+                return;
+            }
         }
+        
+        displayFallbackTweet();
     } catch (error) {
         console.log('Could not fetch latest tweet:', error);
         displayFallbackTweet();
