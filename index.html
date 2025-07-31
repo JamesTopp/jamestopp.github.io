@@ -1,9 +1,21 @@
-<!DOCTYPE html>
+.project-teaser {
+            font-size: 15px;
+            color: #00D4FF;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-style: italic;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .moonlit-teaser {
+            color: #C8834A;
+        }<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>James - Creator & Developer</title>
+    <title>James Topp - HyperConverter Creator</title>
     <style>
         * {
             margin: 0;
@@ -13,273 +25,491 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
             line-height: 1.6;
-            color: #2D2D2D;
-            background: #FAFAFA;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section with Background Image */
+        .hero-section {
             min-height: 100vh;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .profile {
-            margin-bottom: 60px;
-        }
-
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #B4A7D6, #FFC8A2);
-            margin: 0 auto 20px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(180,167,214,0.3)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23333" width="1200" height="800"/><text x="600" y="400" font-family="Arial" font-size="48" fill="%23666" text-anchor="middle" dominant-baseline="middle">Your Photo Here</text></svg>');
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 48px;
-            color: white;
-            box-shadow: 0 8px 32px rgba(180, 167, 214, 0.3);
+            text-align: center;
+            position: relative;
         }
 
-        h1 {
-            font-size: 48px;
-            font-weight: 700;
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-greeting {
+            font-size: 24px;
+            color: #00FF88;
             margin-bottom: 10px;
-            color: #1a1a1a;
+            font-weight: 300;
         }
 
-        .tagline {
-            font-size: 20px;
-            color: #666;
-            margin-bottom: 30px;
-            font-weight: 400;
+        .hero-title {
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #00D4FF, #0066FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .bio {
-            font-size: 16px;
-            color: #555;
+        .hero-subtitle {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: #cccccc;
             max-width: 600px;
-            margin: 0 auto 40px;
+            margin: 0 auto;
             line-height: 1.8;
         }
 
-        .projects {
-            margin-bottom: 60px;
+        /* Machine Door Section Divider */
+        .section-divider {
+            height: 120px;
+            background: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .machine-door {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+            clip-path: polygon(0% 0%, 85% 0%, 100% 100%, 15% 100%);
+        }
+
+        .machine-door::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, #00D4FF, #0066FF);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 20px;
+            background: #111111;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .section-title {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 30px;
-            color: #2D2D2D;
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: #00D4FF;
+            margin-bottom: 40px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 18px;
+            color: #cccccc;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            padding: 30px;
+            border-radius: 0;
+            border: 2px solid #333;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 900;
+            color: #00D4FF;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 80px 20px;
+            background: #0a0a0a;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            margin-top: 60px;
         }
 
         .project-card {
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 20px;
-            border: 1px solid #E5E5E5;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border: 2px solid #333;
+            overflow: hidden;
         }
 
-        .project-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 400px;
         }
 
-        .project-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #FFC8A2, #B4A7D6);
-            border-radius: 12px;
-            margin: 0 auto 20px;
+        .project-info {
+            padding: 50px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            font-size: 24px;
-            color: white;
         }
 
         .project-title {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #2D2D2D;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #B4A7D6, #FFC8A2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-title.moonlit {
+            background: linear-gradient(135deg, #C8834A, #8B5A3C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .project-description {
             font-size: 16px;
-            color: #666;
-            margin-bottom: 20px;
+            color: #cccccc;
+            margin-bottom: 30px;
+            line-height: 1.7;
         }
 
         .project-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
+            gap: 10px;
+            padding: 15px 30px;
             background: linear-gradient(135deg, #B4A7D6, #FFC8A2);
-            color: white;
+            color: #000;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: transform 0.2s ease;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .project-link.moonlit {
+            background: linear-gradient(135deg, #C8834A, #8B5A3C);
+            color: #fff;
         }
 
         .project-link:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
-        .social-links {
+        .project-images {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-image.image-1 {
+            clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+            background: linear-gradient(45deg, #B4A7D6, #FFC8A2);
+        }
+
+        .project-image.image-2 {
+            clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+            background: linear-gradient(135deg, #333, #555);
+        }
+
+        /* Latest Tweet Section */
+        .tweet-section {
+            padding: 80px 20px;
+            background: #111111;
+        }
+
+        .tweet-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .tweet-container .twitter-tweet {
+            margin: 0 auto !important;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 20px;
+            background: #0a0a0a;
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-bottom: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
         }
 
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: #FFFFFF;
-            color: #666;
+        .contact-link {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            color: #00D4FF;
             text-decoration: none;
-            border-radius: 8px;
-            font-size: 20px;
-            transition: all 0.2s ease;
-            border: 1px solid #E5E5E5;
-        }
-
-        .social-link:hover {
-            transform: translateY(-2px);
-            background: #F8F8F8;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .contact {
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 30px;
-            border: 1px solid #E5E5E5;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
-
-        .contact-title {
-            font-size: 24px;
+            border: 2px solid #333;
             font-weight: 600;
-            margin-bottom: 15px;
-            color: #2D2D2D;
+            clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+            transition: all 0.3s ease;
         }
 
-        .contact-text {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 20px;
+        .contact-link:hover {
+            background: linear-gradient(135deg, #00D4FF, #0066FF);
+            color: #000;
+            transform: translateY(-3px);
         }
 
-        .contact-email {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: #1a1a1a;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-
-        .contact-email:hover {
-            transform: translateY(-2px);
-            background: #333;
-        }
-
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
+            .hero-title {
+                font-size: 48px;
             }
             
-            h1 {
-                font-size: 36px;
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
             
-            .tagline {
-                font-size: 18px;
+            .project-content {
+                grid-template-columns: 1fr;
             }
             
-            .social-links {
-                gap: 15px;
+            .project-images {
+                min-height: 300px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Profile Section -->
-        <div class="profile">
-            <div class="avatar">👨‍💻</div>
-            <h1>Hey, I'm James</h1>
-            <p class="tagline">I'm just a guy</p>
-            <p class="bio">
-                Professional campervan builder by trade, vibe-coder by choice. After building 12 custom vans, I realized I love creating things that make people's lives easier—whether it's a mobile home or a browser extension. HyperConverter is project #1 in my Silicon Valley-inspired quest to build a tech company. Stay tuned for what's next.
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">James Topp</h1>
+            <div class="hero-subtitle">Builder. Creator. Problem Solver.</div>
+            <p class="hero-description">
+                From custom campervans to Chrome extensions, I create things that make life easier. 
+                Currently building HyperConverter and exploring the intersection of physical and digital craftsmanship.
             </p>
         </div>
+    </section>
 
-        <!-- Social Links -->
-        <div class="social-links">
-            <a href="https://twitter.com/yourusername" class="social-link" title="Twitter">
-                𝕏
-            </a>
-            <a href="https://github.com/yourusername" class="social-link" title="GitHub">
-                💻
-            </a>
-            <a href="https://linkedin.com/in/yourusername" class="social-link" title="LinkedIn">
-                💼
-            </a>
-            <a href="mailto:your.email@example.com" class="social-link" title="Email">
-                ✉️
-            </a>
-        </div>
+    <!-- Machine Door Divider -->
+    <div class="section-divider">
+        <div class="machine-door"></div>
+    </div>
 
-        <!-- Projects Section -->
-        <div class="projects">
-            <h2 class="section-title">Featured Project</h2>
-            
-            <div class="project-card">
-                <div class="project-icon">🔄</div>
-                <h3 class="project-title">HyperConverter</h3>
-                <p class="project-description">
-                    A Chrome extension that instantly converts measurements on any webpage. 
-                    Just hover over units like inches, cups, or Fahrenheit to see conversions. 
-                    Perfect for international users and online shopping.
-                </p>
-                <a href="https://chrome.google.com/webstore/detail/your-extension-id" class="project-link">
-                    <span>🚀</span>
-                    Install Extension
-                </a>
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">The Journey</h2>
+            <div class="section-subtitle">From workshop to web development</div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I spent years perfecting the art of campervan conversion, building mobile homes that let people chase their dreams. Each van was a puzzle of engineering, design, and craftsmanship.</p>
+                    <br>
+                    <p>Now I'm applying that same problem-solving mindset to the digital world. My first creation, HyperConverter, solves a simple but persistent problem: instant unit conversion while browsing the web.</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">Vans Built</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1</span>
+                        <span class="stat-label">Extension Live</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Ideas Brewing</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Building Mode</span>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Contact Section -->
-        <div class="contact">
-            <h2 class="contact-title">Let's Connect</h2>
-            <p class="contact-text">
-                Always interested in collaborating on projects that make the web better. 
-                Drop me a line if you have ideas or just want to chat!
-            </p>
-            <a href="mailto:your.email@example.com" class="contact-email">
-                <span>📧</span>
-                Get in Touch
-            </a>
-        </div>
+    <!-- Machine Door Divider -->
+    <div class="section-divider">
+        <div class="machine-door"></div>
     </div>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <div class="container">
+            <h2 class="section-title">Current Projects</h2>
+            <div class="section-subtitle">What I'm building right now</div>
+            <div class="projects-grid">
+                <!-- HyperConverter Project -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-info">
+                            <h3 class="project-title">HyperConverter</h3>
+                            <p class="project-description">
+                                A Chrome extension that instantly converts measurements on any webpage. 
+                                Just hover over units like inches, cups, or Fahrenheit to see conversions. 
+                                Perfect for international users and online shopping. 
+                                Born from frustration with constantly switching between tabs for conversions.
+                            </p>
+                            <p class="project-teaser">
+                                Stay tuned - I'm building out support for currency and a whole lot more to make this the ultimate conversion companion.
+                            </p>
+                            <a href="https://chrome.google.com/webstore/detail/your-extension-id" class="project-link">
+                                Install Extension →
+                            </a>
+                        </div>
+                        <div class="project-images">
+                            <div class="project-image image-1"></div>
+                            <div class="project-image image-2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Moonlit Campers Project -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-info">
+                            <h3 class="project-title moonlit">Moonlit Campers</h3>
+                            <p class="project-description">
+                                Professional custom campervan builds. 12 unique conversions designed and built 
+                                from the ground up. Each van is a mobile home crafted for adventure and comfort.
+                                My foundation in building physical products that solve real problems.
+                            </p>
+                            <p class="project-teaser moonlit-teaser">
+                                My last and greatest build is nearing completion - my most ambitious van build yet, featuring some spicy upgrades I've been secretly perfecting behind the scenes.
+                            </p>
+                            <a href="https://moonlitcampers.ca" class="project-link moonlit">
+                                View Past Work →
+                            </a>
+                        </div>
+                        <div class="project-images">
+                            <div class="project-image image-1"></div>
+                            <div class="project-image image-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Machine Door Divider -->
+    <div class="section-divider">
+        <div class="machine-door"></div>
+    </div>
+
+    <!-- Latest Tweet Section -->
+    <section class="tweet-section">
+        <div class="container">
+            <h2 class="section-title">Latest from X</h2>
+            <div class="section-subtitle">What I'm thinking about</div>
+            <div class="tweet-container">
+                <blockquote class="twitter-tweet" data-theme="dark" data-width="500">
+                    <p lang="en" dir="ltr">Loading latest tweet...</p>
+                    <a href="https://twitter.com/Jms_Tpp">@Jms_Tpp</a>
+                </blockquote>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">Let's Build Something</h2>
+                <div class="section-subtitle">Always open to interesting projects and conversations</div>
+                <p style="color: #cccccc; font-size: 18px; margin-top: 20px;">
+                    Whether you have an idea for a digital product, need advice on van conversion, 
+                    or just want to chat about the intersection of physical and digital craftsmanship.
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:your.email@example.com" class="contact-link">Get in Touch</a>
+                    <a href="https://x.com/Jms_Tpp" class="contact-link">Follow on X</a>
+                    <a href="https://github.com/jamestopp" class="contact-link">GitHub</a>
+                    <a href="https://buymeacoffee.com/jamestopp" class="contact-link">Buy Coffee</a>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
