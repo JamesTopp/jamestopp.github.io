@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>James Topp - HyperConverter Creator</title>
+    <title>James Topp - Builder</title>
     <style>
         * {
             margin: 0;
@@ -338,6 +338,23 @@
     font-size: 15px;
 }
 
+.x-name-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.x-display-name {
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.x-username {
+    color: #71767B;
+    font-size: 15px;
+}
+
         /* Contact Section */
         .contact-section {
             padding: 80px 20px;
@@ -527,10 +544,8 @@
    <!-- Latest Tweet Section -->
 <section class="tweet-section">
     <div class="container">
-        <h2 class="section-title">Latest from X</h2>
-        <div class="section-subtitle">What I'm thinking about</div>
         <div class="tweet-container">
-            <div class="custom-tweet" id="latestTweet">
+            <div class="x-post" id="latestTweet">
                 <div class="tweet-loading">Loading latest tweet...</div>
             </div>
         </div>
@@ -645,29 +660,33 @@ function displayTweet(tweet) {
         <div class="x-post-header">
             <div class="x-avatar">JT</div>
             <div class="x-user-info">
-                <div class="x-display-name">James Topp</div>
-                <div class="x-username">@Jms_Tpp</div>
-            </div>
+    <div class="x-name-line">
+        <span class="x-display-name">James Topp</span>
+        <span class="x-username">@Jms_Tpp</span>
+    </div>
+</div>
         </div>
         <div class="x-content">${content}</div>
         <div class="x-timestamp">${tweetDate}</div>
     `;
 }
 
-function displayFallbackTweet() {
-    const tweetContainer = document.getElementById('latestTweet');
-    tweetContainer.innerHTML = `
+    function displayFallbackTweet() {
+        const tweetContainer = document.getElementById('latestTweet');
+        tweetContainer.innerHTML = `
         <div class="x-post-header">
             <div class="x-avatar">JT</div>
             <div class="x-user-info">
-                <div class="x-display-name">James Topp</div>
-                <div class="x-username">@Jms_Tpp</div>
-            </div>
+    <div class="x-name-line">
+        <span class="x-display-name">James Topp</span>
+        <span class="x-username">@Jms_Tpp</span>
+    </div>
+</div>
         </div>
         <div class="x-content">Building the future, one project at a time. Follow along for updates on HyperConverter and more! 🚀</div>
         <div class="x-timestamp">Recent</div>
     `;
-}
+    }
 
 // Load latest tweet when page loads
 document.addEventListener('DOMContentLoaded', fetchLatestTweet);
