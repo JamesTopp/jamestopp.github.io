@@ -619,8 +619,7 @@ function updateStatsDisplay(data) {
 async function fetchLatestTweet() {
     try {
         // Using RSS2JSON service to convert Twitter RSS to JSON
-        const rssUrl = 'https://rss.app/feeds/1JewJewtiRYpAEHs.xml'; // You'll need to get this URL
-        
+const rssUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://nitter.poast.org/Jms_Tpp/rss';         
         const response = await fetch(rssUrl);
         const data = await response.json();
         
