@@ -560,5 +560,119 @@
             </div>
         </div>
     </section>
+    <script>
+// Function to fetch Chrome Web Store data
+async function fetchChromeWebStoreData() {
+    // Since we can't directly access Chrome Web Store API due to CORS,
+    // this is a placeholder that you'd replace with your actual extension ID
+    // and implement server-side fetching or use a proxy service
+    
+    const extensionId = 'your-extension-id'; // Replace with actual extension ID
+    
+    try {
+        // Placeholder data - in production, you'd fetch this from:
+        // 1. Your own analytics API
+        // 2. A serverless function that scrapes the store
+        // 3. A third-party service that provides this data
+        
+        const mockData = {
+            users: Math.floor(Math.random() * 5000) + 1000, // Random between 1K-6K
+            rating: (4.5 + Math.random() * 0.4).toFixed(1), // Random between 4.5-4.9
+            reviews: Math.floor(Math.random() * 200) + 50 // Random between 50-250
+        };
+        
+        // Update the DOM with fetched data
+        updateStatsDisplay(mockData);
+        
+    } catch (error) {
+        console.log('Could not fetch Chrome Web Store data:', error);
+        // Fallback to default values
+        updateStatsDisplay({
+            users: '1.2K',
+            rating: '4.8',
+            reviews: '124'
+        });
+    }
+}
+
+function updateStatsDisplay(data) {
+    // Format user count
+    let userCount = data.users;
+    if (typeof userCount === 'number') {
+        if (userCount >= 1000) {
+            userCount = (userCount / 1000).toFixed(1) + 'K';
+        }
+    }
+
+    // Update DOM elements
+    const userElement = document.querySelector('.stat-number[data-stat="users"]');
+    const ratingElement = document.querySelector('.stat-number[data-stat="rating"]');
+    const progressElement = document.querySelector('.progress-fill');
+
+    if (userElement) userElement.textContent = userCount;
+    if (ratingElement) ratingElement.textContent = data.rating;
+    
+    // Update progress bar based on rating (rating/5 * 100)
+    if (progressElement && typeof data.rating === 'string') {
+        const ratingPercent = (parseFloat(data.rating) / 5) * 100;
+        progressElement.style.width = ratingPercent + '%';
+    }
+}
+
+// Twitter RSS Feed Integration
+async function fetchLatestTweet() {
+    try {
+        // Using RSS2JSON service to convert Twitter RSS to JSON
+        const rssUrl = 'https://rss.app/feeds/v1.1/_2FVgX8mB9v3EGNkA.json'; // You'll need to get this URL
+        
+        const response = await fetch(rssUrl);
+        const data = await response.json();
+        
+        if (data.items && data.items.length > 0) {
+            const latestTweet = data.items[0];
+            displayTweet(latestTweet);
+        } else {
+            displayFallbackTweet();
+        }
+    } catch (error) {
+        console.log('Could not fetch latest tweet:', error);
+        displayFallbackTweet();
+    }
+}
+
+function displayTweet(tweet) {
+    const tweetContainer = document.getElementById('latestTweet');
+    const tweetDate = new Date(tweet.date_published).toLocaleDateString();
+    
+    // Clean up the tweet content (remove title prefix if exists)
+    let content = tweet.content_text || tweet.title;
+    
+    tweetContainer.innerHTML = `
+        <div class="tweet-content">${content}</div>
+        <div class="tweet-meta">
+            <span class="tweet-author">@Jms_Tpp</span>
+            <span class="tweet-date">${tweetDate}</span>
+        </div>
+        <a href="${tweet.url}" class="tweet-link" target="_blank">View on X →</a>
+    `;
+}
+
+function displayFallbackTweet() {
+    const tweetContainer = document.getElementById('latestTweet');
+    tweetContainer.innerHTML = `
+        <div class="tweet-content">
+            Building the future, one project at a time. Follow along for updates on HyperConverter and more! 🚀
+        </div>
+        <div class="tweet-meta">
+            <span class="tweet-author">@Jms_Tpp</span>
+            <span class="tweet-date">Recent</span>
+        </div>
+        <a href="https://x.com/Jms_Tpp" class="tweet-link" target="_blank">Follow on X →</a>
+    `;
+}
+
+// Load latest tweet when page loads
+document.addEventListener('DOMContentLoaded', fetchLatestTweet);
+</script>
 </body>
 </html>
