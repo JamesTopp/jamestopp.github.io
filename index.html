@@ -298,6 +298,21 @@
     margin-bottom: 12px;
 }
 
+.x-post-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.x-post-link:hover {
+    transform: translateY(-2px);
+}
+
+.x-post-link:hover .x-post {
+    border-color: #00D4FF;
+}
+
 .x-avatar {
     width: 40px;
     height: 40px;
@@ -698,19 +713,21 @@ function displayTweet(tweet) {
 }
 
     function displayFallbackTweet() {
-        const tweetContainer = document.getElementById('latestTweet');
-        tweetContainer.innerHTML = `
-        <div class="x-post-header">
-            <div class="x-avatar">JT</div>
-            <div class="x-user-info">
-    <div class="x-name-line">
-        <span class="x-display-name">James Topp</span>
-        <span class="x-username">@Jms_Tpp</span>
-    </div>
-</div>
-        </div>
+    const tweetContainer = document.getElementById('latestTweet');
+    tweetContainer.innerHTML = `
+        <a href="https://x.com/Jms_Tpp" target="_blank" class="x-post-link">
+            <div class="x-post-header">
+                <div class="x-avatar">JT</div>
+                <div class="x-user-info">
+                    <div class="x-name-line">
+                        <span class="x-display-name">James Topp</span>
+                        <span class="x-username">@Jms_Tpp</span>
+                    </div>
+                </div>
+            </div>
         <div class="x-content">Is this thing on?</div>
-        <div class="x-timestamp">Recent</div>
+        <div class="x-timestamp">Most recent update on X.com</div>
+        </a>
     `;
     }
 
