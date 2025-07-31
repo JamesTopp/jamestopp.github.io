@@ -290,6 +290,57 @@
         .tweet-container .twitter-tweet {
             margin: 0 auto !important;
         }
+        
+        .custom-tweet {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #1a1a1a;
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    color: #ffffff;
+}
+
+.tweet-loading {
+    text-align: center;
+    color: #00D4FF;
+    font-style: italic;
+}
+
+.tweet-content {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.tweet-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #333;
+    font-size: 14px;
+    color: #888;
+}
+
+.tweet-author {
+    font-weight: 600;
+    color: #00D4FF;
+}
+
+.tweet-date {
+    color: #666;
+}
+
+.tweet-link {
+    color: #00D4FF;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.tweet-link:hover {
+    text-decoration: underline;
+}
 
         /* Contact Section */
         .contact-section {
@@ -477,20 +528,18 @@
         <div class="machine-door"></div>
     </div>
 
-    <!-- Latest Tweet Section -->
-    <section class="tweet-section">
-        <div class="container">
-            <h2 class="section-title">Latest from X</h2>
-            <div class="section-subtitle">What I'm thinking about</div>
-            <div class="tweet-container">
-                <blockquote class="twitter-tweet" data-theme="dark" data-width="500">
-                    <p lang="en" dir="ltr">Loading latest tweet...</p>
-                    <a href="https://twitter.com/Jms_Tpp">@Jms_Tpp</a>
-                </blockquote>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+   <!-- Latest Tweet Section -->
+<section class="tweet-section">
+    <div class="container">
+        <h2 class="section-title">Latest from X</h2>
+        <div class="section-subtitle">What I'm thinking about</div>
+        <div class="tweet-container">
+            <div class="custom-tweet" id="latestTweet">
+                <div class="tweet-loading">Loading latest tweet...</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Contact Section -->
     <section class="contact-section">
