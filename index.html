@@ -241,41 +241,58 @@
             transform: translateY(-3px);
         }
 
-        .project-images {
+            /* Project Carousel */
+        .project-carousel {
             position: relative;
+            width: 100%;
+            height: 400px;
             overflow: hidden;
+            border-radius: 8px;
         }
 
-        .project-image {
-            position: absolute;
+        .carousel-container {
+            position: relative;
             width: 100%;
             height: 100%;
-            background-size: cover;
-            background-position: center;
         }
 
-            /* HyperConverter Images */
-        .project-image.hyperconverter-image-1 {
-            clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
-            background: url('./images/hyperconverter-1.jpg') center/cover;
+        .carousel-slide {
+            display: none;
+            width: 100%;
+            height: 100%;
         }
 
-        .project-image.hyperconverter-image-2 {
-            clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
-            background: url('./images/hyperconverter-2.jpg') center/cover;
+        .carousel-slide.active {
+            display: block;
         }
 
-        /* Moonlit Campers Images */
-        .project-image.moonlit-image-1 {
-            clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
-            background: url('./images/moonlit-1.jpg') center/cover;
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
         }
 
-        .project-image.moonlit-image-2 {
-            clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
-            background: url('./images/moonlit-2.jpg') center/cover;
+        .carousel-dots {
+            text-align: center;
+            padding: 15px 0 0 0;
         }
 
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #666;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active,
+        .dot:hover {
+            background-color: #00D4FF;
+        }
             /* Latest Tweet Section */
         .tweet-section {
             padding: 80px 20px;
@@ -530,9 +547,23 @@
                                 Check It Out →
                             </a>
                             </div>
-                            <div class="project-images">
-                                <div class="project-image hyperconverter-image-1"></div>
-                                <div class="project-image hyperconverter-image-2"></div>
+                           <div class="project-carousel" id="hyperconverter-carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-slide active">
+                                        <img src="./images/hyperconverter-1.jpg" alt="HyperConverter Screenshot 1">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="./images/hyperconverter-2.jpg" alt="HyperConverter Screenshot 2">
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="./images/hyperconverter-3.jpg" alt="HyperConverter Screenshot 3">
+                                    </div>
+                                </div>
+                                <div class="carousel-dots">
+                                    <span class="dot active" onclick="currentSlide(1, 'hyperconverter')"></span>
+                                    <span class="dot" onclick="currentSlide(2, 'hyperconverter')"></span>
+                                    <span class="dot" onclick="currentSlide(3, 'hyperconverter')"></span>
+                                </div>
                             </div>
                             </div>
                             </div>
@@ -554,9 +585,23 @@
                                 View Past Work →
                             </a>
                         </div>
-                        <div class="project-images">
-                            <div class="project-image moonlit-image-1"></div>
-                            <div class="project-image moonlit-image-2"></div>
+                       <div class="project-carousel" id="moonlit-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="./images/moonlit-1.jpg" alt="Moonlit Campers Van 1">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="./images/moonlit-2.jpg" alt="Moonlit Campers Van 2">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="./images/moonlit-3.jpg" alt="Moonlit Campers Van 3">
+                                </div>
+                            </div>
+                            <div class="carousel-dots">
+                                <span class="dot active" onclick="currentSlide(1, 'moonlit')"></span>
+                                <span class="dot" onclick="currentSlide(2, 'moonlit')"></span>
+                                <span class="dot" onclick="currentSlide(3, 'moonlit')"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -701,6 +746,35 @@ async function fetchLatestTweet() {
     } catch (error) {
         console.log('Could not fetch latest tweet:', error);
         displayFallbackTweet();
+    }
+}
+
+// Carousel functionality
+let slideIndex = {
+    hyperconverter: 1,
+    moonlit: 1
+};
+
+function currentSlide(n, project) {
+    showSlides(slideIndex[project] = n, project);
+}
+
+function showSlides(n, project) {
+    const carousel = document.getElementById(project + '-carousel');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.querySelectorAll('.dot');
+    
+    if (n > slides.length) { slideIndex[project] = 1; }
+    if (n < 1) { slideIndex[project] = slides.length; }
+    
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    if (slides[slideIndex[project] - 1]) {
+        slides[slideIndex[project] - 1].classList.add('active');
+    }
+    if (dots[slideIndex[project] - 1]) {
+        dots[slideIndex[project] - 1].classList.add('active');
     }
 }
 
