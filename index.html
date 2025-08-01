@@ -254,121 +254,133 @@
             background-position: center;
         }
 
-        .project-image.image-1 {
+            /* HyperConverter Images */
+        .project-image.hyperconverter-image-1 {
             clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
-            background: linear-gradient(45deg, #B4A7D6, #FFC8A2);
+            background: url('./images/hyperconverter-1.jpg') center/cover;
         }
 
-        .project-image.image-2 {
+        .project-image.hyperconverter-image-2 {
             clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
-            background: linear-gradient(135deg, #333, #555);
+            background: url('./images/hyperconverter-2.jpg') center/cover;
         }
 
-    /* Latest Tweet Section */
-.tweet-section {
-    padding: 80px 20px;
-    background: #111111;
-}
+        /* Moonlit Campers Images */
+        .project-image.moonlit-image-1 {
+            clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+            background: url('./images/moonlit-1.jpg') center/cover;
+        }
 
-.tweet-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-}
+        .project-image.moonlit-image-2 {
+            clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+            background: url('./images/moonlit-2.jpg') center/cover;
+        }
 
-.x-post {
-    max-width: 500px;
-    margin: 0 auto;
-    background: #000;
-    border: 1px solid #333;
-    border-radius: 16px;
-    padding: 16px;
-    color: #ffffff;
-}
+            /* Latest Tweet Section */
+        .tweet-section {
+            padding: 80px 20px;
+            background: #111111;
+        }
 
-.tweet-loading {
-    text-align: center;
-    color: #00D4FF;
-    font-style: italic;
-}
+        .tweet-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
 
-.x-post-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-}
+        .x-post {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 16px;
+            color: #ffffff;
+        }
 
-.x-post-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: transform 0.2s ease;
-}
+        .tweet-loading {
+            text-align: center;
+            color: #00D4FF;
+            font-style: italic;
+        }
 
-.x-post-link:hover {
-    transform: translateY(-2px);
-}
+        .x-post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
 
-.x-post-link:hover .x-post {
-    border-color: #00D4FF;
-}
+        .x-post-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.2s ease;
+        }
 
-.x-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #00D4FF, #0066FF);
-    margin-right: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: white;
-}
+        .x-post-link:hover {
+            transform: translateY(-2px);
+        }
 
-.x-user-info {
-    flex-grow: 1;
-}
+        .x-post-link:hover .x-post {
+            border-color: #00D4FF;
+        }
 
-.x-display-name {
-    font-weight: 700;
-    color: #ffffff;
-    font-size: 15px;
-}
+        .x-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00D4FF, #0066FF);
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
 
-.x-username {
-    color: #71767B;
-    font-size: 15px;
-}
+        .x-user-info {
+            flex-grow: 1;
+        }
 
-.x-content {
-    font-size: 15px;
-    line-height: 1.3;
-    margin-bottom: 12px;
-    color: #ffffff;
-}
+        .x-display-name {
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 15px;
+        }
 
-.x-timestamp {
-    color: #71767B;
-    font-size: 15px;
-}
+        .x-username {
+            color: #71767B;
+            font-size: 15px;
+        }
 
-.x-name-line {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+        .x-content {
+            font-size: 15px;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
 
-.x-display-name {
-    font-weight: 700;
-    color: #ffffff;
-    font-size: 15px;
-}
+        .x-timestamp {
+            color: #71767B;
+            font-size: 15px;
+        }
 
-.x-username {
-    color: #71767B;
-    font-size: 15px;
-}
+        .x-name-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .x-display-name {
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 15px;
+        }
+
+        .x-username {
+            color: #71767B;
+            font-size: 15px;
+        }
 
         /* Contact Section */
         .contact-section {
@@ -505,24 +517,25 @@
                         <div class="project-info">
                             <h3 class="project-title">HyperConverter</h3>
                             <p class="project-description">
-                                A Chrome extension that instantly converts measurements on any webpage. 
-                                Just hover over units like inches, cups, or Fahrenheit to see conversions. 
-                                Perfect for international users and online shopping. 
+                                A Chrome extension that instantly converts measurements on any webpage.
+                                Just hover over units like inches, cups, or Fahrenheit to see conversions.
+                                Perfect for international users and online shopping.
                                 Born from frustration with constantly switching between tabs for conversions.
                             </p>
                             <p class="project-teaser">
-                                Stay tuned - I'm building out support for currency and a whole lot more to make this the ultimate conversion companion.
+                                Stay tuned - I'm building out support for currency and a whole lot more to make this the ultimate conversion
+                                companion.
                             </p>
                             <a href="https://chrome.google.com/webstore/detail/your-extension-id" class="project-link">
-                                Install Extension →
+                                Check It Out →
                             </a>
-                        </div>
-                        <div class="project-images">
-                            <div class="project-image image-1"></div>
-                            <div class="project-image image-2"></div>
-                        </div>
-                    </div>
-                </div>
+                            </div>
+                            <div class="project-images">
+                                <div class="project-image hyperconverter-image-1"></div>
+                                <div class="project-image hyperconverter-image-2"></div>
+                            </div>
+                            </div>
+                            </div>
 
                 <!-- Moonlit Campers Project -->
                 <div class="project-card">
@@ -542,8 +555,8 @@
                             </a>
                         </div>
                         <div class="project-images">
-                            <div class="project-image image-1"></div>
-                            <div class="project-image image-2"></div>
+                            <div class="project-image moonlit-image-1"></div>
+                            <div class="project-image moonlit-image-2"></div>
                         </div>
                     </div>
                 </div>
